@@ -1,0 +1,23 @@
+import numpy as np
+import pandas as pd
+
+# Set random seed for reproducibility
+np.random.seed(42)
+
+# Generate 100+ random values for AREA (in square feet)
+area = np.random.randint(500, 5000, size=100)
+
+# Generate PRICE based on AREA with some noise
+price = area * np.random.uniform(100, 300) + np.random.normal(0, 10000, size=100)
+
+# Create DataFrame
+df = pd.DataFrame({
+    'AREA': area,
+    'PRICE': price.astype(int)  # Convert price to integer
+})
+
+# Display first 5 rows
+print(df.head())
+
+# Optionally save to CSV
+df.to_csv("area_price_dataset.csv", index=False)
